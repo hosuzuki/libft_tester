@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:00:10 by jtoty             #+#    #+#             */
-/*   Updated: 2021/10/26 12:18:22 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/03 13:02:49 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,4 @@ int	main(void)
 	judge(ft_isascii(' '), isascii(' '));
 	printf("%i:", 12);
 	judge(ft_isascii(128), isascii(128));
-	printf("\n");
 }

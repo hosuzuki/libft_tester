@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:00:21 by jtoty             #+#    #+#             */
-/*   Updated: 2021/10/26 12:34:41 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/03 13:02:25 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,5 @@ int	main(void)
 	judge(ft_isdigit(' '), isdigit(' '));
 	printf("%i:", 12);
 	judge(ft_isdigit(128), isdigit(128));
-	printf("\n");
 	return (0);
 }

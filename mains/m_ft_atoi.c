@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 11:58:41 by jtoty             #+#    #+#             */
-/*   Updated: 2021/10/25 07:08:03 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/03 13:03:42 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void judge(int i, int j)
 	else
 		printf("x ");
 }
-
 
 int	main(void)
 {
@@ -64,5 +63,4 @@ int	main(void)
 	judge(ft_atoi(""), atoi(""));
 //	printf("ft_atoi is: %i\n", ft_atoi(""));
 //	printf("atoi is: %i\n", atoi(""));
-	printf("\n");
 }

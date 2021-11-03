@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 11:59:07 by jtoty             #+#    #+#             */
-/*   Updated: 2021/10/26 11:55:40 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/03 13:04:07 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void judge(int i, int j)
 	else
 		printf("x ");
 }
-
 
 int	main(void)
 {
@@ -53,5 +52,4 @@ int	main(void)
 	char a = 0;
 	char b = 0;
 	judge(ft_isalnum(a), isalnum(b));
-	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 11:59:49 by jtoty             #+#    #+#             */
-/*   Updated: 2021/10/30 11:47:51 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/03 13:02:38 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,4 @@ int	main(void)
 	char a = 0;
 	char b = 0;
 	judge(ft_isalpha(a), isalpha(b));
-	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 15:15:43 by jtoty             #+#    #+#             */
-/*   Updated: 2021/10/30 12:16:58 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/03 13:01:09 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -195,7 +195,6 @@ int	main(void)
 		printf("o ");
 	else
 		printf("x ");
-	printf("\n");
 	free_tab(tab, 1);
 	free_lst(lst);
 	return (0);
