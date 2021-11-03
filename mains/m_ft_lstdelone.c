@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_lstdelone.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 15:15:51 by jtoty             #+#    #+#             */
-/*   Updated: 2019/12/04 21:08:23 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/10/30 12:36:31 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,7 @@
 #include "libft.h"
 #include <unistd.h>
 #include <string.h>
-
-static void			ft_print_result(char *content)
-{
-	int		len;
-
-	len = 0;
-	while (content[len])
-		len++;
-	write(1, content, len);
-}
-
+#include <stdio.h>
 
 static int	nb_free_done;
 
@@ -46,7 +36,7 @@ static t_list		*get_lst_new_elem(void *content)
 	return (elem);
 }
 
-static void			free_memory_and_return(char **tab, int i)
+static void			free_tab(char **tab, int i)
 {
 	while (i >= 0)
 	{
@@ -56,7 +46,7 @@ static void			free_memory_and_return(char **tab, int i)
 	free(tab);
 }
 
-static void			free_memory_lst_and_return(t_list *elem)
+static void	free_lst(t_list *elem)
 {
 	t_list		*tmp;
 
@@ -68,7 +58,7 @@ static void			free_memory_lst_and_return(t_list *elem)
 	}
 }
 
-static char			**get_content_lst(int size)
+static char	**get_content_lst(int size)
 {
 	char	**tab;
 	int		i;
@@ -83,7 +73,7 @@ static char			**get_content_lst(int size)
 		str[0] += i % 25;
 		if (!(tab[i] = strdup(str)))
 		{
-			free_memory_and_return(tab, i - 1);
+			free_tab(tab, i - 1);
 			return (NULL);
 		}
 		i++;
@@ -97,24 +87,32 @@ static t_list		*get_elem_lst(t_list *begin, char **tab, int i)
 
 	if (!(elem = get_lst_new_elem(tab[i])))
 	{
-		free_memory_lst_and_return(begin);
-		free_memory_and_return(tab, 4);
+		free_lst(begin);
+		free_tab(tab, 4);
 		return (NULL);
 	}
 	return (elem);
 }
 
-static void			check_lstdelone(t_list *elem)
+static void			check_lstdelone(t_list *elem, int i)
 {
 	if (elem)
-		ft_print_result((char *)elem->content);
+	{
+		if (i == 1)
+			printf("o ");
+		else
+			printf("x ");
+	}
 	else
-		ft_print_result("NULL");
-	write(1, "\n", 1);
-
+	{
+		if (i == 0)
+			printf("o ");
+		else
+			printf("x ");
+	}
 }
 
-int					 main(int argc, const char *argv[])
+int	main(void)
 {
 	t_list		*elem;
 	t_list		*elem2;
@@ -122,7 +120,7 @@ int					 main(int argc, const char *argv[])
 	t_list		*elem4;
 	char		**tab;
 
-	if (argc == 1 || (!(tab = get_content_lst(4))))
+	if (!(tab = get_content_lst(4)))
 		return (0);
 	elem = NULL;
 	if (!(elem = get_elem_lst(elem, tab, 0)))
@@ -137,25 +135,25 @@ int					 main(int argc, const char *argv[])
 		return (0);
 	elem3->next = elem4;
 	nb_free_done = 0;
-	alarm(5);
-	if (atoi(argv[1]) == 1)
-	{
-		ft_lstdelone(elem3, &ft_del);
-		elem3 = NULL;
-		elem2->next = NULL;
-		check_lstdelone(elem);
-		check_lstdelone(elem2);
-		check_lstdelone(elem3);
-		check_lstdelone(elem4);
-		nb_free_done += '0';
-		write(1, "nb_free_done = ", 15);
-		write(1, &nb_free_done, 1);
-		free(tab[3]);
-		free_memory_and_return(tab, 1);
-		free(elem4);
-	}
+	ft_lstdelone(elem3, &ft_del);
+	elem3 = NULL;
+	elem2->next = NULL;
+	printf("1:");
+	check_lstdelone(elem, 1);
+	printf("2:");
+	check_lstdelone(elem2, 1);
+	printf("3:");
+	check_lstdelone(elem3, 0);
+	printf("4:");
+	check_lstdelone(elem4, 1);
+	printf("5:");
+	if (nb_free_done == 1)
+		printf("o ");
 	else
-		free_memory_and_return(tab, 4);
-	free_memory_lst_and_return(elem);
+		printf("x ");
+	free(tab[3]);
+	free(elem4);
+	free_tab(tab, 1);
+	free_lst(elem);
 	return (0);
 }

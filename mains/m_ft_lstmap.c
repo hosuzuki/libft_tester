@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_lstmap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 15:16:21 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:56:01 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/10/31 05:48:58 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include <unistd.h>
 #include <string.h>
+#include <stdio.h>
 
 static t_list		*get_lst_new_elem(void *content)
 {
@@ -27,7 +28,7 @@ static t_list		*get_lst_new_elem(void *content)
 	return (elem);
 }
 
-static void			free_memory_and_return(char **tab, int i)
+static void			free_tab(char **tab, int i)
 {
 	while (i >= 0)
 	{
@@ -37,7 +38,7 @@ static void			free_memory_and_return(char **tab, int i)
 	free(tab);
 }
 
-static void			free_memory_lst_and_return(t_list *elem)
+static void			free_lst(t_list *elem)
 {
 	t_list		*tmp;
 
@@ -64,7 +65,7 @@ static char			**get_content_lst(int size)
 		str[0] += i % 25;
 		if (!(tab[i] = strdup(str)))
 		{
-			free_memory_and_return(tab, i - 1);
+			free_tab(tab, i - 1);
 			return (NULL);
 		}
 		i++;
@@ -78,13 +79,12 @@ static t_list		*get_elem_lst(t_list *begin, char **tab, int i)
 
 	if (!(elem = get_lst_new_elem(tab[i])))
 	{
-		free_memory_lst_and_return(begin);
-		free_memory_and_return(tab, 4);
+		free_lst(begin);
+		free_tab(tab, 4);
 		return (NULL);
 	}
 	return (elem);
 }
-#include <stdio.h>
 
 static void			ft_delelem(t_list *elem)
 {
@@ -105,7 +105,8 @@ static void		*ft_mapelem(char *content)
 	}
 	return (content);
 }
-int				 	main(int argc, const char *argv[])
+
+int				 	main(void)
 {
 	t_list		*elem;
 	t_list		*elem2;
@@ -115,7 +116,7 @@ int				 	main(int argc, const char *argv[])
 	t_list		*list;
 	char		**tab;
 
-	if (argc == 1 || (!(tab = get_content_lst(4))))
+	if (!(tab = get_content_lst(4)))
 		return (0);
 	elem = NULL;
 	if (!(elem = get_elem_lst(elem, tab, 0)))
@@ -129,34 +130,37 @@ int				 	main(int argc, const char *argv[])
 	if (!(elem4 = get_elem_lst(elem, tab, 3)))
 		return (0);
 	elem3->next = elem4;
-	alarm(5);
-	if (atoi(argv[1]) == 1)
+	
+//	printf("elem content = %s\n", (char *)elem->content);
+//	printf("elem content = %s\n", (char *)elem2->content);
+//	printf("elem content = %s\n", (char *)elem3->content);
+//	printf("elem content = %s\n\n", (char *)elem4->content);
+	if (!(list = ft_lstmap(elem, (void *)&ft_mapelem, (void *)&ft_delelem)))
 	{
-		printf("elem content = %s\n", (char *)elem->content);
-		printf("elem content = %s\n", (char *)elem2->content);
-		printf("elem content = %s\n", (char *)elem3->content);
-		printf("elem content = %s\n\n", (char *)elem4->content);
-		if (!(list = ft_lstmap(elem, (void *)&ft_mapelem, (void *)&ft_delelem)))
-		{
-			free(tab[3]);
-			free(tab);
-			free_memory_and_return(tab, 4);
-			free_memory_lst_and_return(elem);
-			return (0);
-		}
-		if (list == elem)
-			write(1, "A new list is not returned\n", 27);
-		tmp = list;
-		printf("tmp = %s elem = %s\n", (char *)tmp->content, (char *)elem->content);
-
-		while (tmp)
-		{
-			printf("tmp = %s\n", (char *)tmp->content);
-			tmp = tmp->next;
-		}
-		free_memory_lst_and_return(list);
+//		free(tab[3]);
+//		free(tab);
+		free_tab(tab, 4);
+		free_lst(elem);
+		return (0);
 	}
-	free_memory_and_return(tab, 4);
-	free_memory_lst_and_return(elem);
+//	if (list == elem)
+//		write(1, "A new list is not returned\n", 27);
+	tmp = list;
+//	printf("tmp = %s elem = %s\n", (char *)tmp->content, (char *)elem->content);
+	int i = 1;
+	while (tmp)
+	{
+	printf("%i:", i);
+	if (strcmp(tmp->content, "yyyyyy") == 0)
+		printf("o ");
+	else
+		printf("x ");
+//		printf("tmp = %s\n", (char *)tmp->content);
+	i++;
+	tmp = tmp->next;
+	}
+	free_lst(list);
+	free_tab(tab, 4);
+	free_lst(elem);
 	return (0);
 }

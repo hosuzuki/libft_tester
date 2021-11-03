@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_isdigit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:00:21 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:39:15 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/10/26 12:34:41 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,42 @@
 #include <unistd.h>
 #include <ctype.h>
 #include "libft.h"
+#include <stdio.h>
 
-	static void	ft_print_result(int n)
+static void judge(int i, int j)
 {
-	if (n)
-		write(1, "1", 1);
+	if (i == j)
+		printf("o ");
 	else
-		write(1, "0", 1);
+		printf("x ");
 }
 
-static void		check_isdigit(int start, int end)
+int	main(void)
 {
-	while (start <= end)
-	{
-		ft_print_result(ft_isdigit(start));
-		start++;
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_isdigit(0, 47);
-	else if (arg == 2)
-		check_isdigit('0', '9');
-	else if (arg == 3)
-		check_isdigit(58, 64);
-	else if (arg == 4)
-		check_isdigit('A', 'Z');
-	else if (arg == 5)
-		check_isdigit(91, 96);
-	else if (arg == 6)
-		check_isdigit('a', 'z');
-	else if (arg == 7)
-		check_isdigit(123, 127);
+	printf("%i:", 1);
+	judge(ft_isdigit(0), isdigit(0));
+	printf("%i:", 2);
+	judge(ft_isdigit(47), isdigit(47));
+	printf("%i:", 3);
+	judge(ft_isdigit('0'), isdigit('0'));
+	printf("%i:", 4);
+	judge(ft_isdigit('9'), isdigit('9'));
+	printf("%i:", 5);
+	judge(ft_isdigit(58), isdigit(58));
+	printf("%i:", 6);
+	judge(ft_isdigit('A'), isdigit('A'));
+	printf("%i:", 7);
+	judge(ft_isdigit('a'), isdigit('a'));
+	printf("%i:", 8);
+	judge(ft_isdigit('Z'), isdigit('Z'));
+	printf("%i:", 9);
+	judge(ft_isdigit('\n'), isdigit('\n'));
+	printf("%i:", 10);
+	judge(ft_isdigit('\t'), isdigit('\t'));
+	printf("%i:", 11);
+	judge(ft_isdigit(' '), isdigit(' '));
+	printf("%i:", 12);
+	judge(ft_isdigit(128), isdigit(128));
+	printf("\n");
 	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_lstiter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 15:16:05 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:55:49 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/10/30 13:05:18 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 #include <unistd.h>
 #include "libft.h"
 #include <string.h>
+#include <stdio.h>
 
-static void			ft_modify_list_with_d(char *content)
+static int modify_count;
+
+static void	ft_modify_list_with_d(char *content)
 {
 	int		len;
 
@@ -25,23 +28,16 @@ static void			ft_modify_list_with_d(char *content)
 		content[len] = 'd';
 		len++;
 	}
+	modify_count++;
 }
 
-static void			ft_print_result(t_list *elem)
+void check_content(t_list	*elem)
 {
-	int		len;
-	char	*content;
-
-	while (elem)
-	{
-		len = 0;
-		content = (char *)elem->content;
-		while (content[len])
-			len++;
-		write(1, content, len);
-		write(1, "\n", 1);
-		elem = elem->next;
-	}
+	if (strcmp(elem->content, "dddddd") == 0)
+//	if (elem->content == "dddddd")
+		printf("o ");
+	else
+		printf("x ");
 }
 
 static t_list		*get_lst_new_elem(void *content)
@@ -56,7 +52,7 @@ static t_list		*get_lst_new_elem(void *content)
 	return (elem);
 }
 
-static void			free_memory_and_return(char **tab, int i)
+static void			free_tab(char **tab, int i)
 {
 	while (i >= 0)
 	{
@@ -66,7 +62,7 @@ static void			free_memory_and_return(char **tab, int i)
 	free(tab);
 }
 
-static void			free_memory_lst_and_return(t_list *elem)
+static void			free_lst(t_list *elem)
 {
 	t_list		*tmp;
 
@@ -93,7 +89,7 @@ static char			**get_content_lst(int size)
 		str[0] += i % 25;
 		if (!(tab[i] = strdup(str)))
 		{
-			free_memory_and_return(tab, i - 1);
+			free_tab(tab, i - 1);
 			return (NULL);
 		}
 		i++;
@@ -107,14 +103,14 @@ static t_list		*get_elem_lst(t_list *begin, char **tab, int i)
 
 	if (!(elem = get_lst_new_elem(tab[i])))
 	{
-		free_memory_lst_and_return(begin);
-		free_memory_and_return(tab, 4);
+		free_lst(begin);
+		free_tab(tab, 4);
 		return (NULL);
 	}
 	return (elem);
 }
 
-int					 main(int argc, const char *argv[])
+int	main(void)
 {
 	t_list		*elem;
 	t_list		*elem2;
@@ -122,7 +118,7 @@ int					 main(int argc, const char *argv[])
 	t_list		*elem4;
 	char		**tab;
 
-	if (argc == 1 || (!(tab = get_content_lst(4))))
+	if (!(tab = get_content_lst(4)))
 		return (0);
 	elem = NULL;
 	if (!(elem = get_elem_lst(elem, tab, 0)))
@@ -136,13 +132,22 @@ int					 main(int argc, const char *argv[])
 	if (!(elem4 = get_elem_lst(elem, tab, 3)))
 		return (0);
 	elem3->next = elem4;
-	alarm(5);
-	if (atoi(argv[1]) == 1)
-	{
-		ft_lstiter(elem, (void *)&ft_modify_list_with_d);
-		ft_print_result(elem);
-	}
-	free_memory_and_return(tab, 4);
-	free_memory_lst_and_return(elem);
+	modify_count = 0;
+	ft_lstiter(elem, (void *)&ft_modify_list_with_d);
+	printf("1:");
+	check_content(elem);
+	printf("2:");
+	check_content(elem2);
+	printf("3:");
+	check_content(elem3);
+	printf("4:");
+	check_content(elem4);
+	printf("5:");
+	if (modify_count == 4)
+		printf("o ");
+	else
+		printf("x ");
+	free_tab(tab, 4);
+	free_lst(elem);
 	return (0);
 }

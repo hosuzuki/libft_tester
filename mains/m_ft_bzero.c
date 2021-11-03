@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_bzero.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 11:58:52 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:38:29 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/10/25 12:44:38 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,52 @@
 #include <unistd.h>
 #include <string.h>
 #include "libft.h"
+#include <stdio.h>
 
-static void		check_bzero(void *mem, int c, int len, int n_bzero)
+static void judge(char *mem, char *mem1)
 {
-	memset(mem, c, len);
-	ft_bzero(mem, n_bzero);
-	write(1, mem, len);
+	if (strcmp(mem, mem1) == 0)
+		printf("o ");
+	else
+		printf("x ");
 }
 
-int				main(int argc, const char *argv[])
+int main(void)
 {
-	void	*mem;
+	char	*mem;
+	char	*mem1;
 	int		len;
-	int		arg;
 
-	alarm(5);
 	len = 5;
-	if (argc == 1 || !(mem = malloc(sizeof(*mem) * len)))
+	mem = malloc(sizeof(*mem) * len);
+	if (mem == NULL)
 		return (0);
-	if ((arg = atoi(argv[1])) == 1)
-		check_bzero(mem, 'e', len, 5);
-	else if (arg == 2)
-		check_bzero(mem, 'e', len, 0);
+	mem1 = malloc(sizeof(*mem) * len);
+	if (mem1 == NULL)
+		return (0);
+
+	printf("%i:", 1);
+	memset(mem, 'e', len);
+	memset(mem1, 'e', len);
+	ft_bzero(mem, 5);
+	bzero(mem1, 5);
+	judge(mem, mem1);
+
+	printf("%i:", 2);
+	memset(mem, 'e', len);
+	memset(mem1, 'e', len);
+	ft_bzero(mem, 0);
+	int zero= 0;
+	bzero(mem1, zero);
+	judge(mem, mem1);
+
+	printf("%i:", 3);
+	memset(mem, 'e', len);
+	memset(mem1, 'e', len);
+	ft_bzero(mem, 10);
+	bzero(mem1, 10);
+	judge(mem, mem1);
+//why doesn't it go to segmatation fault if the len is longer than the string.?
 	free(mem);
 	return (0);
 }

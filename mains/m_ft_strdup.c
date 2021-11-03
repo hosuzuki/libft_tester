@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_strdup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:04:55 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:44:42 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/11/02 11:17:52 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "libft.h"
+#include <stdio.h>
 
 static void		ft_print_result(char const *s)
 {
@@ -25,24 +26,24 @@ static void		ft_print_result(char const *s)
 	write(1, s, len);
 }
 
-int				main(int argc, const char *argv[])
+int	main(void)
 {
-	char	str[] = "lorem ipsum dolor sit amet";
+	char	str[] = "HELLO WORLD!";
 	char	*str_dup;
 
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	if (atoi(argv[1]) == 1)
+	if (!(str_dup = ft_strdup(str)))
+		ft_print_result("NULL");
+	else
 	{
-		if (!(str_dup = ft_strdup(str)))
-			ft_print_result("NULL");
+		printf("1:");
+		if (strcmp(str, str_dup) == 0)
+			printf("o ");
 		else
-			ft_print_result(str_dup);
-		if (str_dup == str)
-			ft_print_result("\nstr_dup's adress == str's adress");
-		else
-			free(str_dup);
+			printf("x ");
 	}
+	if (str_dup == str)
+		ft_print_result("\nstr_dup's adress == str's adress");
+	else
+		free(str_dup);
 	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_lstlast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 16:16:05 by jtoty             #+#    #+#             */
-/*   Updated: 2019/11/20 17:55:49 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/10/30 18:59:43 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,7 @@
 #include <unistd.h>
 #include "libft.h"
 #include <string.h>
-
-static void			ft_print_result(char const *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
+#include <stdio.h>
 
 static t_list		*get_lst_new_elem(void *content)
 {
@@ -37,7 +28,7 @@ static t_list		*get_lst_new_elem(void *content)
 	return (elem);
 }
 
-static void			free_memory_and_return(char **tab, int i)
+static void			free_tab(char **tab, int i)
 {
 	while (i >= 0)
 	{
@@ -47,7 +38,7 @@ static void			free_memory_and_return(char **tab, int i)
 	free(tab);
 }
 
-static void			free_memory_lst_and_return(t_list *elem)
+static void			free_lst(t_list *elem)
 {
 	t_list		*tmp;
 
@@ -74,7 +65,7 @@ static char			**get_content_lst(int size)
 		str[0] += i % 25;
 		if (!(tab[i] = strdup(str)))
 		{
-			free_memory_and_return(tab, i - 1);
+			free_tab(tab, i - 1);
 			return (NULL);
 		}
 		i++;
@@ -88,8 +79,8 @@ static t_list		*get_elem_lst(t_list *begin, char **tab, int i)
 
 	if (!(elem = get_lst_new_elem(tab[i])))
 	{
-		free_memory_lst_and_return(begin);
-		free_memory_and_return(tab, 4);
+		free_lst(begin);
+		free_tab(tab, 4);
 		return (NULL);
 	}
 	return (elem);
@@ -98,24 +89,20 @@ static t_list		*get_elem_lst(t_list *begin, char **tab, int i)
 static void			check_lstlast(t_list *elem, t_list *begin)
 {
 	if (elem != ft_lstlast(begin))
-		ft_print_result("Last elem was not returned\n");
+		printf("x ");
 	else
-	{
-		ft_print_result((char *)elem->content);
-		write(1, "\n", 1);
-	}
+		printf("o ");
 }
 
-int					 main(int argc, const char *argv[])
+int					 main(void)
 {
-	int			arg;
 	t_list		*elem;
 	t_list		*elem2;
 	t_list		*elem3;
 	t_list		*elem4;
 	char		**tab;
 
-	if (argc == 1 || (!(tab = get_content_lst(4))))
+	if (!(tab = get_content_lst(4)))
 		return (0);
 	elem = NULL;
 	if (!(elem = get_elem_lst(elem, tab, 0)))
@@ -129,12 +116,11 @@ int					 main(int argc, const char *argv[])
 	if (!(elem4 = get_elem_lst(elem, tab, 3)))
 		return (0);
 	elem3->next = elem4;
-	alarm(5);
-	if ((arg = atoi(argv[1])) == 1)
-		check_lstlast(elem4, elem);
-	else if (arg == 2)
-		check_lstlast(elem4, elem4);
-	free_memory_and_return(tab, 4);
-	free_memory_lst_and_return(elem);
+	printf("1:");
+	check_lstlast(elem4, elem);
+	printf("2:");
+	check_lstlast(elem4, elem4);
+	free_tab(tab, 4);
+	free_lst(elem);
 	return (0);
 }

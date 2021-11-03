@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_isascii.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:00:10 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:39:02 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/10/26 12:18:22 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,41 @@
 #include <unistd.h>
 #include <ctype.h>
 #include "libft.h"
+#include <stdio.h>
 
-static void		ft_print_result(int n)
+static void judge(int i, int j)
 {
-	if (n)
-		write(1, "1", 1);
+	if (i == j)
+		printf("o ");
 	else
-		write(1, "0", 1);
+		printf("x ");
 }
 
-static void		check_isascii(int start, int end)
+int	main(void)
 {
-	while (start <= end)
-	{
-		ft_print_result(ft_isascii(start));
-		start++;
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_isascii(0, 47);
-	else if (arg == 2)
-		check_isascii('0', '9');
-	else if (arg == 3)
-		check_isascii(58, 64);
-	else if (arg == 4)
-		check_isascii('A', 'Z');
-	else if (arg == 5)
-		check_isascii(91, 96);
-	else if (arg == 6)
-		check_isascii('a', 'z');
-	else if (arg == 7)
-		check_isascii(123, 127);
-	else if (arg == 7)
-		check_isascii(128, 138);
-	return (0);
+	printf("%i:", 1);
+	judge(ft_isascii(0), isascii(0));
+	printf("%i:", 2);
+	judge(ft_isascii(47), isascii(47));
+	printf("%i:", 3);
+	judge(ft_isascii('0'), isascii('0'));
+	printf("%i:", 4);
+	judge(ft_isascii('9'), isascii('9'));
+	printf("%i:", 5);
+	judge(ft_isascii(58), isascii(58));
+	printf("%i:", 6);
+	judge(ft_isascii('A'), isascii('A'));
+	printf("%i:", 7);
+	judge(ft_isascii('a'), isascii('a'));
+	printf("%i:", 8);
+	judge(ft_isascii('Z'), isascii('Z'));
+	printf("%i:", 9);
+	judge(ft_isascii('\n'), isascii('\n'));
+	printf("%i:", 10);
+	judge(ft_isascii('\t'), isascii('\t'));
+	printf("%i:", 11);
+	judge(ft_isascii(' '), isascii(' '));
+	printf("%i:", 12);
+	judge(ft_isascii(128), isascii(128));
+	printf("\n");
 }

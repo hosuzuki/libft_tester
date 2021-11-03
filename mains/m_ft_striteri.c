@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_striteri.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:33:44 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:53:13 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/11/02 11:27:38 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "libft.h"
-
-static void		ft_print_result(char const *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
+#include <stdio.h>
 
 static void		iter(unsigned int i, char *c)
 {
@@ -39,19 +30,22 @@ static void		iter(unsigned int i, char *c)
 		*c = *c + 32;
 }
 
-int				main(int argc, const char *argv[])
+int	main(void)
 {
 	char	*str;
 
-	alarm(5);
 	str = (char *)malloc(sizeof(*str) * 12);
-	if (argc == 1 || !str)
+	if (!str)
 		return (0);
-	else if (atoi(argv[1]) == 1)
+	else
 	{
-		strcpy(str, "LoReM iPsUm");
+		strcpy(str, "HELLO world");
 		ft_striteri(str, &iter);
-		ft_print_result(str);
+		printf ("1:");
+		if (strcmp(str, "hello WORLD") == 0)
+			printf("o ");
+		else
+			printf("x ");
 	}
 	free(str);
 	return (0);

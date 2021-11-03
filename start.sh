@@ -13,7 +13,7 @@ PATH_TEST="$(cd "$(dirname "$0")" && pwd -P)"
 
 ##-Pはわからない。。
 PATH_LIBFT="$(cd "$(dirname "$0")/.." && pwd -P)"
-
+RED="\033[31m"
 #exec 2> /dev/null
 #exec コマンドを使うと、同じプロセス内で外部コマンドが実行される。
 #exec > output のように実行すると、それ以降実行されるコマンドの標準出力については、

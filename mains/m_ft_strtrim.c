@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_ft_strtrim.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:35:29 by jtoty             #+#    #+#             */
-/*   Updated: 2019/11/19 23:54:44 by jtoty            ###   ########.fr       */
+/*   Updated: 2021/11/03 11:27:52 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "libft.h"
+#include <stdio.h>
 
 static void		ft_print_result(char const *s)
 {
@@ -24,52 +25,84 @@ static void		ft_print_result(char const *s)
 	write(1, s, len);
 }
 
-static void		check_strtrim(char *s1, char *set)
+static void		check_strtrim(char *s1, char *set, int i)
 {
 	char	*strtrim;
 
 	if (!(strtrim = ft_strtrim(s1, set)))
 		ft_print_result("NULL");
 	else
-		ft_print_result(strtrim);
+	{
+		if (i == 1)
+		{
+			if (strcmp(strtrim, "hello \n \t wo\nrld") == 0)
+				printf("o ");
+			else
+				printf("x ");
+		}
+		else if (i == 2 || i == 3)
+		{
+			if (strcmp(strtrim, "hello world") == 0)
+				printf("o ");
+			else
+				printf("x ");
+		}
+		else if (i == 4)
+		{
+			if (strcmp(strtrim, "hello\n worl\td") == 0)
+				printf("o ");
+			else
+				printf("x ");
+		}
+		else if (i == 5)
+		{
+			if (strtrim[0] == '\0')
+				printf("o ");
+			else
+				printf("x ");
+		}
 	if (strtrim == s1)
 		ft_print_result("\nA new string was not returned");
 	else
 		free(strtrim);
+	}
 }
 
-int				main(int argc, const char *argv[])
+int main(void)
 {
 	char	set [] = "\t \n";
-	int		arg;
+	int	i;
 
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
+	i = 1;
+	while (i < 6)
 	{
-		char s1[] = "lorem \n ipsum \t dolor \n sit \t amet";
-		check_strtrim(s1, set);
-	}
-	else if (arg == 2)
-	{
-		char s1[] = "lorem ipsum dolor sit amet \n \t ";
-		check_strtrim(s1, set);
-	}
-	else if (arg == 3)
-	{
-		char s1[] = " \n \t lorem ipsum dolor sit amet";
-		check_strtrim(s1, set);
-	}
-	else if (arg == 4)
-	{
-		char s1[] = "  \n  \t  lorem \n ipsum \t dolor \n sit \t amet  \t \n ";
-		check_strtrim(s1, set);
-	}
-	else if (arg == 5)
-	{
-		char s1[] = "          ";
-		check_strtrim(s1, set);
+		printf("%i:", i);
+		if (i == 1)
+		{
+			char s1[] = "hello \n \t wo\nrld";
+			check_strtrim(s1, set, i);
+		}
+		else if (i == 2)
+		{
+			char s1[] = "hello world \n \t ";
+			check_strtrim(s1, set, i);
+		}
+		else if (i == 3)
+		{
+			char s1[] = " \n \t hello world";
+			check_strtrim(s1, set, i);
+		}
+		else if (i == 4)
+		{
+			char s1[] = "  \n  \t  hello\n worl\td  \t \n ";
+			check_strtrim(s1, set, i);
+		}
+		else if (i == 5)
+		{
+			char s1[] = "          ";
+			check_strtrim(s1, set, i);
+		}
+		i++;
 	}
 	return (0);
 }
