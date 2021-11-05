@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 11:58:41 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/03 13:03:42 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/04 12:08:23 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include "libft.h"
 #include <stdio.h>
+#include <limits.h>
 
 static void judge(int i, int j)
 {
@@ -61,6 +62,42 @@ int	main(void)
 	judge(ft_atoi("\n\n\n  -46\b9 \n5d6"), atoi("\n\n\n  -46\b9 \n5d6"));
 	printf("%i:", 18);
 	judge(ft_atoi(""), atoi(""));
-//	printf("ft_atoi is: %i\n", ft_atoi(""));
-//	printf("atoi is: %i\n", atoi(""));
+	//	printf("ft_atoi is: %i\n", ft_atoi(""));
+	//	printf("atoi is: %i\n", atoi(""));
+
+	printf("19:");
+//	printf("\nst :  %d\n",    atoi("9223372036854775806"));
+//	printf("ft :  %d\n", ft_atoi("9223372036854775806"));
+	judge(ft_atoi("9223372036854775806"), atoi("9223372036854775806"));
+	printf("20:");
+//	printf("\nst :  %d\n",    atoi("9223372036854775807"));
+//	printf("ft :  %d\n", ft_atoi("9223372036854775807"));
+	judge(ft_atoi("9223372036854775807"), atoi("9223372036854775807"));
+	printf("21:");
+//	printf("\nst :  %d\n",    atoi("9223372036854775808"));
+//	printf("ft :  %d\n", ft_atoi("9223372036854775808"));
+	judge(ft_atoi("9223372036854775808"), atoi("9223372036854775808"));
+	printf("22:");
+//	printf("\nst :  %d\n",    atoi("-9223372036854775807"));
+//	printf("ft :  %d\n", ft_atoi("-9223372036854775807"));
+	judge(ft_atoi("-9223372036854775807"), atoi("-9223372036854775807"));
+	printf("23:");
+//	printf("\nst :  %d\n",    atoi("-9223372036854775808"));
+//	printf("ft :  %d\n", ft_atoi("-9223372036854775808"));
+	judge(ft_atoi("-9223372036854775808"), atoi("-9223372036854775808"));
+	printf("24:");
+//	printf("\nst :  %d\n",    atoi("-9223372036854775809"));
+//	printf("ft :  %d\n", ft_atoi("-9223372036854775809"));
+	judge(ft_atoi("-9223372036854775809"), atoi("-9223372036854775809"));
+	printf("25:");
+//	printf("\nst :  %d\n",    atoi("-9223372036854775810"));
+//	printf("ft :  %d\n", ft_atoi("-9223372036854775810"));
+	judge(ft_atoi("-9223372036854775810"), atoi("-9223372036854775810"));
+	printf("26:");
+//	printf("\nst :  %d\n",    atoi("99223372036854775810"));
+//	printf("ft :  %d\n", ft_atoi("99223372036854775810"));
+	judge(ft_atoi("99223372036854775810"), atoi("99223372036854775810"));
+	//9223372036854775807
+//	printf("LONG_MAX is: %ld\n", LONG_MAX);
+//	printf("LONG MIN is: %ld\n", LONG_MIN);
 }

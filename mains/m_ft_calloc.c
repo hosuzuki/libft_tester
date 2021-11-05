@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 11:59:07 by jtoty             #+#    #+#             */
-/*   Updated: 2021/10/25 13:07:19 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/04 12:51:14 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	main(void)
 
 	str = (char *)ft_calloc(30, sizeof(char));
 	str1 = (char *)calloc(30, sizeof(char));
-	printf("1: ");
+	printf("1:");
 	judge(str, str1);
 
-	printf("2: ");
+	printf("2:");
 	for (int i = 0; i < 10; i++)
 	{
 		str1[i] = '0';

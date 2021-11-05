@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:34:58 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/01 17:55:40 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/04 20:31:47 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void			check_split(char *s, char c)
 
 int	main(void)
 {
-	check_split("t1:to 2t:o t3:tto t", 't');
-	check_split("A4AA:oA 5A:oA", 'A');
+	check_split("tttt1:to 2t:o t3:tttto tttt", 't');
+	check_split("AAAAAA4AA:oA 5A:oA", 'A');
 	return (0);
 }

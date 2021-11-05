@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:08:05 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/02 17:29:34 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/04 12:43:35 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 //	char s1[] = "hello world! Hello World! 42! Forty two!";
 	
 	i = 1;
-	while (i < 11)
+	while (i < 13)
 	{
 		printf("%i:", i);
 		if (i == 1)
@@ -59,6 +59,12 @@ int	main(void)
 			check_strnstr(s, "Hello", 17);
 		else if (i == 10)
 			check_strnstr(s, "Hello", 0);
+		else if (i == 11)
+			check_strnstr("", "", 0);
+		else if (i == 12)
+			check_strnstr(NULL, "1", 0);
+//		else if (i == 13)
+//			check_strnstr(NULL, "1", 1);
 		i++;
 	}
 	return (0);
