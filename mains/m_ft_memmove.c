@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:02:17 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/01 15:14:50 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/15 17:29:13 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,44 @@ static void		check_memmove(void *dest, void *src, int n, int j)
 	}
 }
 
-int				main(void)
+int	main(void)
 {
-	char	src[] = "123456789123456789";
-	char	*dest;
-	int j;
+	int i;
 
-	j = 1;
+	i = 1;
 	dest = src + 1;
-	printf("1:");
-	check_memmove(dest, "abcdefghijklmnopqr", 8, 1);
-	j++;
-	printf("2:");
-	check_memmove(dest, "hello worl\0\0!!", 14, 2);
-	j++;
-	printf("3:");
-	check_memmove(dest, src, 8, 3);
-	j++;
-	printf("4:");
-	check_memmove(src, dest, 8, 4);
-	j++;
-	printf("5:");
-	check_memmove(src, dest, 0, 5);
+	while (i < 6)
+	{
+		char	*dest;
+		char	*dest1;
+		char	src[] = "123456789123456789";
+		char	src1[] = "123456789123456789";
+		printf("%i:", i);
+		if (i == 1)
+		{
+			check_memmove(dest, dest1, "abcdefghijklmnopqr", 8, 1);
+			i++;
+		}
+		if (i == 2)
+		{
+			check_memmove(dest, dest1, "hello worl\0\0!!", 14, 2);
+			i++;
+		}
+		if (i == 3)
+		{
+			check_memmove(dest, dest1, src, 8, 3);
+			i++;
+		}
+		if (i == 4)
+		{
+			check_memmove(src, dest, 8, 4);
+			i++
+		};
+		if (i == 5)
+		{
+			check_memmove(src, dest, 0, 5);
+			i++;
+		}
+	}
 	return (0);
 }
