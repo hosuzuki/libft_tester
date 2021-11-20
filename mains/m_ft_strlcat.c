@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:06:12 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/02 14:39:54 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/19 11:54:37 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,21 @@
 
 static void		check_strlcat(char *dest, char *dest1, char *src, int size, int dest_len)
 {
+	size_t	i = ft_strlcat(dest, src, size);
+	size_t	j = strlcat(dest1, src, size);
 	(void)dest_len;
-	if (ft_strlcat(dest, src, size) == strlcat(dest1, src, size) 
-		&& strcmp(dest, dest1) == 0)
+	if (dest == NULL || dest1 == NULL)
+		printf("o ");
+	else if ( i == j	&& strcmp(dest, dest1) == 0)
 		printf("o ");
 	else
 		printf("x ");
+/*	printf("\nft_strlcat:%zu\n", i);
+	printf("   strlcat:%zu\n", j);
+	printf("ft_strlcat: %s\n", dest);
+	printf("   strlcat: %s\n", dest1);
+*/
 }
-
-//	printf("\nft_strlcat:%zu\n", ft_strlcat(dest, src, size));
-//	printf("ft_strlcat:%s\n", dest);
-//	write(1, dest, dest_len);
-//	write(1, "\n", 1);
-//	printf("   strlcat:%lu\n", strlcat(dest1, src, size));
-	//printf("   strlcat:%s\n", dest1);
-//	write(1, dest, dest_len);
-//	write(1, "\n", 1);
 
 int	main(void)
 {
@@ -48,7 +47,7 @@ int	main(void)
 		return (0);
 	if (!(dest1 = (char *)malloc(sizeof(*dest1) * dest_len)))
 		return (0);
-	while ( i < 10)
+	while ( i < 12)
 	{
 		memset(dest, 0, dest_len);
 		memset(dest, 'r', 6);
@@ -118,8 +117,44 @@ int	main(void)
 			check_strlcat(dest, dest1, "lorem ipsum dolor sit amet", 15, dest_len);
 			i++;
 		}
+		else if (i == 10)
+		{
+		dest[0] = '\0';
+		dest1[0] = '\0';
+		check_strlcat(dest, dest1, "lorem ipsum", 0, dest_len);
+		i++;
+		}
+		else if (i == 11)
+		{
+		check_strlcat(NULL, NULL, "lorem ipsum", 0, dest_len);
+		i++;
+		}
 	}
 	free(dest);
 	free(dest1);
 	return (0);
 }
+
+
+
+/*
+int	main(void)
+{
+//	char c[256] = "42tokyo";
+
+//	printf("%lu\n", strlcat(NULL , "aiueo", 0)); // 5
+//	printf("%lu\n", ft_strlcat(NULL , "aiueo", 0)); // 5
+//	printf("%lu\n", strlcat(NULL , "aiueo", 2)); // segmentation fault
+//	printf("%lu\n", ft_strlcat(NULL , "aiueo", 2)); // segmentation fault
+//	printf("%lu\n", strlcat(c , NULL , 0)); // segmentation fault
+//	printf("%lu\n", ft_strlcat(c , NULL , 0)); // segmentation fault
+//	printf("%lu\n", strlcat(c , NULL , 2)); // segmentation fault
+//	printf("%lu\n", ft_strlcat(c , NULL , 2)); // segmentation fault
+//	printf("%lu\n", strlcat(NULL , NULL , 0)); // segmentation fault
+//	printf("%lu\n", ft_strlcat(NULL , NULL , 0)); // segmentation fault
+//	printf("%lu\n", strlcat(NULL , NULL , 2)); // segmentation fault
+//	printf("%lu\n", ft_strlcat(NULL , NULL , 2)); // segmentation fault
+
+return (0);
+}
+*/

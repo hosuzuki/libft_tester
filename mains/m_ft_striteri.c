@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:33:44 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/02 11:27:38 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/20 10:22:51 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "libft.h"
 #include <stdio.h>
 
-static void		iter(unsigned int i, char *c)
+
+static void function(unsigned int i, char *c)
 {
 	static int indexArray[11] = {0};
 
@@ -30,17 +31,32 @@ static void		iter(unsigned int i, char *c)
 		*c = *c + 32;
 }
 
+/*
+int main(void)
+{
+	char s[10];
+
+	s[0] = 'H';
+	s[1] = 'w';
+	s[2] = '\0';
+	ft_striteri(s, &function);
+	printf("s is : %s\n", s);
+	return (0);
+}
+*/
+
+
 int	main(void)
 {
 	char	*str;
 
-	str = (char *)malloc(sizeof(*str) * 12);
+	str = calloc(12, sizeof(char));
 	if (!str)
 		return (0);
 	else
 	{
 		strcpy(str, "HELLO world");
-		ft_striteri(str, &iter);
+		ft_striteri(str, &function);
 		printf ("1:");
 		if (strcmp(str, "hello WORLD") == 0)
 			printf("o ");
@@ -50,3 +66,13 @@ int	main(void)
 	free(str);
 	return (0);
 }
+
+/*
+int main(void)
+{
+	static int indexArray[11] = {4};
+	for (int i = 0; i < 10; i++)
+		printf("%d\n", indexArray[i]);
+	return (0);
+}
+*/

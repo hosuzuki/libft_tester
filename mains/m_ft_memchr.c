@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:01:40 by jtoty             #+#    #+#             */
-/*   Updated: 2021/10/31 10:05:53 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/19 13:12:42 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,25 @@
 #include "libft.h"
 #include <stdio.h>
 
-static void		check_memchr(void *s, char c, int n, void	*answer)
+static void		check_memchr(void *s, int c, int n, void	*answer)
 {
 	const char *str;
+	const char *str1;
 
+	(void)answer;
 	str = ft_memchr(s, c, n);
-    if (str == NULL)
+	str1 = memchr(s, c, n);
+	if (str == NULL)
 	{
-	    if (answer == NULL)
+	    if (str1 == NULL)
 	       	printf("o ");
 	    else
 		    printf("x" );
 	}
 	else
 	{
-	    if(strcmp(str, (char	*)answer) == 0)
+	    if(strcmp(str, str1) == 0)
+//	    if(strcmp(str, (char	*)answer) == 0)
 //    if (strcmp(str, answer) == 0)
 	    	printf("o ");
 	    else
@@ -53,8 +57,12 @@ int	main(void)
 	printf("6:");
 	check_memchr("bonjour", 'h', 100, NULL);
 //	printf("7:");
+//	check_memchr(NULL, NULL, 4, NULL);
+//	printf("7:");
 //	int tab[7] = {-49, 49, 1, -1, 0, 10, 100};
 //	printf("%s\n", (char)ft_memchr(tab, -1, 7));
 //	check_memchr(tab, -1, 7, );
 	return (0);
 }
+
+

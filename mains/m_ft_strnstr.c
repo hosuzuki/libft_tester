@@ -6,14 +6,16 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:08:05 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/04 12:43:35 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/18 22:25:47 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "libft.h"
 #include <stdio.h>
+
 
 static void		check_strnstr(char *big, char *little, int len)
 {
@@ -26,7 +28,7 @@ static void		check_strnstr(char *big, char *little, int len)
 		printf("o ");
 	else
 		printf("x ");
-//	printf("\nstr is: %s\nstr1 is: %s\n", str, str1);
+//	printf("\nft is: %s\nst is: %s\n", str, str1);
 }
 
 int	main(void)
@@ -36,7 +38,7 @@ int	main(void)
 //	char s1[] = "hello world! Hello World! 42! Forty two!";
 	
 	i = 1;
-	while (i < 13)
+	while (i < 12)
 	{
 		printf("%i:", i);
 		if (i == 1)
@@ -61,11 +63,39 @@ int	main(void)
 			check_strnstr(s, "Hello", 0);
 		else if (i == 11)
 			check_strnstr("", "", 0);
-		else if (i == 12)
-			check_strnstr(NULL, "1", 0);
-//		else if (i == 13)
-//			check_strnstr(NULL, "1", 1);
 		i++;
 	}
 	return (0);
 }
+
+/*
+//segmenatation fault case
+int	main(void)
+{
+
+//	printf("%s\n", strnstr("aiueo", NULL, 5)); // segmentation fault
+//	printf("%s\n", ft_strnstr("aiueo", NULL, 5)); // segmentation fault
+//	printf("%s\n", strnstr("aiueo", NULL, 0)); // segmentation fault
+//	printf("%s\n", ft_strnstr("aiueo", NULL, 0)); // segmentation fault
+//	printf("%s\n", strnstr(NULL , NULL , 5)); // segmentation fault
+//	printf("%s\n", ft_strnstr(NULL , NULL , 5)); // segmentation fault
+//	printf("%s\n", strnstr(NULL , NULL , 0)); // segmentation fault
+//	printf("%s\n", ft_strnstr(NULL , NULL , 0)); // segmentation fault
+//	printf("%s\n", strnstr(NULL , "aiueo", 0)); // null
+//	printf("%s\n", ft_strnstr(NULL , "aiueo", 0)); // null
+//	printf("%s\n", strnstr(NULL , "aiueo", 5)); // segmentation fault
+//	printf("%s\n", ft_strnstr(NULL , "aiueo", 5)); // segmentation fault
+
+return (0);
+}
+
+*/
+
+/*
+strnstr("aiueo", NULL, 5); // segmentation fault
+strnstr("aiueo", NULL, 0); // segmentation fault
+strnstr(NULL, NULL, 5); // segmentation fault
+strnstr(NULL, NULL, 0); // segmentation fault
+strnstr(NULL, "aiueo", 0); // (null)
+strnstr(NULL, "aiueo", 5); // segmentation fault
+*/

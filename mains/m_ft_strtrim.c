@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:35:29 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/03 11:27:52 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/18 22:34:11 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void		check_strtrim(char *s1, char *set, int i)
 		ft_print_result("NULL");
 	else
 	{
+//		printf("\nft_strtrim: %s\n", strtrim);
 		if (i == 1)
 		{
 			if (strcmp(strtrim, "hello \n \t wo\nrld") == 0)
@@ -54,7 +55,7 @@ static void		check_strtrim(char *s1, char *set, int i)
 			else
 				printf("x ");
 		}
-		else if (i == 5)
+		else if (i == 5 || i == 6)
 		{
 			if (strtrim[0] == '\0')
 				printf("o ");
@@ -74,7 +75,7 @@ int main(void)
 	int	i;
 
 	i = 1;
-	while (i < 6)
+	while (i < 7)
 	{
 		printf("%i:", i);
 		if (i == 1)
@@ -100,6 +101,11 @@ int main(void)
 		else if (i == 5)
 		{
 			char s1[] = "          ";
+			check_strtrim(s1, set, i);
+		}
+		else if (i == 6)
+		{
+			char s1[] = "\n\n\n\n\n\t\t\t\t\t\t    \t\t\t\n\n\n\n";
 			check_strtrim(s1, set, i);
 		}
 		i++;

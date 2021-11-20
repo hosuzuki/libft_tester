@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:08:30 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/02 18:07:42 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/18 21:57:37 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void		check_strrchr(char *s, int c, int offset)
 	}
 	else
 		printf("x ");
+//	printf("\nft_strrchr: %s\n", str);
+//	printf("   strrchr: %s\n", str1);
 }
 
 int	main(void)
@@ -75,3 +77,16 @@ int	main(void)
 	}
 	return (0);
 }
+
+
+
+/*
+//Case2; Segmatation Fault
+int	main(void)
+{
+//	printf("%s\n", strrchr(NULL, 'a')); // segmentation fault
+//	printf("%s\n", ft_strrchr(NULL , 'a')); // segmentation fault
+
+return (0);
+}
+*/

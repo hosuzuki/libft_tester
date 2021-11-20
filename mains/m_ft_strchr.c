@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:03:23 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/02 11:13:18 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/18 21:18:27 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,55 +16,60 @@
 #include "libft.h"
 #include <stdio.h>
 
-static void		check_strchr(char *s, int c, int j)
-{
-	char		*str;
 
-	str = ft_strchr(s, c);
-	if (j == 1)
-	{
-		if (str == s)
-			printf("o ");
-		else
-			printf("x ");
-	}
-	else if (j == 2)
-	{
-		if (str == NULL)
-			printf("o ");
-		else
-			printf("x ");
-	}
-	else if (j == 3)
-	{
-		if (str[0] == '\0' && str == &s[7])
-			printf("o ");
-		else
-			printf("x ");
-	}
-	else if (j == 4) 
-	{
-		if (str[0] == '\0' && str == s)
-			printf("o ");
-		else
-			printf("x ");
-	}
+static void		check_strchr(char *s1, char *s2, int c)
+{
+	char	*str1;
+	char	*str2;
+
+	str1 = ft_strchr(s1, c);
+	str2 = strchr(s2, c);
+	if (str1 == NULL && str2 == NULL)
+		printf("o ");
+	else if (strcmp(str1, str2) == 0)
+		printf("o ");
+	else
+		printf("x ");
+//	printf("\nft_strchr: %s\n", str1);
+//	printf("   strchr: %s\n", str2);
 }
 
-int				main(void)
+int	main(void)
 {
-	char		str2[] = "bonjour";
-
-	printf("1:");
-	check_strchr(str2, 'b', 1);
-	printf("2:");
-	check_strchr(str2, 's', 2);
-	printf("3:");
-	check_strchr(str2, '\0', 3);
-	printf("4:");
+	char	str1[] = "bonjour";
+	char	str2[] = "bonjour";
+	int i = 1;
+	while (i < 6)
 	{
-		char	str3[] = "";
-		check_strchr(str3, '\0', 4);
+		printf("%d:", i);
+		if (i == 1)
+			check_strchr(str1, str2, 'b');
+		else if (i == 2)
+			check_strchr(str1, str2, 's');
+		else if (i == 3)
+			check_strchr(str1, str2, '\0');
+		else if (i == 4)
+		{
+			char	str3[] = "";
+			char	str4[] = "";
+			check_strchr(str3, str4, '\0');
+		}
+		else if (i == 5)
+			check_strchr("hello", "hello", 0);
+		i++;
 	}
 	return (0);
 }
+
+
+/*
+//Case2; Segmatation Fault
+int	main(void)
+{
+
+//	printf("%s\n", strchr(NULL, 'a')); // segmentation fault
+//	printf("%s\n", ft_strchr(NULL , 'a')); // segmentation fault
+
+return (0);
+}
+*/

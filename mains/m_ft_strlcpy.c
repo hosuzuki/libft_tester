@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 15:28:06 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/02 14:57:52 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/19 11:59:56 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,14 @@
 #include "libft.h"
 #include <stdio.h>
 
-void			ft_print_result(int n)
-{
-	char c;
-
-	if (n >= 10)
-		ft_print_result(n / 10);
-	c = n % 10 + '0';
-	write (1, &c, 1);
-}
-
 static void		check_strlcpy(char *dest, char *dest1, char *src, int size, int dest_len)
 {
 	(void)dest_len;
 	if (ft_strlcpy(dest, src, size) == strlcpy(dest1, src, size))
 	{
-		if (strcmp(dest, dest1) == 0)
+		if (dest == NULL && dest1 == NULL)
+			printf("o ");
+		else if (strcmp(dest, dest1) == 0)
 			printf("o ");
 		else
 			printf("x ");
@@ -39,11 +31,6 @@ static void		check_strlcpy(char *dest, char *dest1, char *src, int size, int des
 	else
 		printf("x ");
 }
-
-	//ft_print_result(ft_strlcpy(dest, src, size));
-	//write(1, "\n", 1);
-	//write(1, dest, dest_len);
-	//free(dest);
 
 int	main(void)
 {
@@ -58,7 +45,7 @@ int	main(void)
 		return (0);
 	if (!(dest1 = (char *)malloc(sizeof(*dest1) * dest_len)))
 		return (0);
-	while (i < 6)
+	while (i < 7)
 	{
 		memset(dest, 0, dest_len);
 		memset(dest, 'r', 6);
@@ -73,11 +60,35 @@ int	main(void)
 			check_strlcpy(dest, dest1, "lorem ipsum", 3, dest_len);
 		else if (i ==4)
 			check_strlcpy(dest, dest1, "lorem ipsum dolor sit amet", 15, dest_len);
-		else 
+		else if (i == 5)
 			check_strlcpy(dest, dest1, "lorem ipsum dolor sit amet", 0, dest_len);
+		else if (i == 6)
+			check_strlcpy(NULL, NULL, "lorem ipsum dolor sit amet", 0, dest_len);
 		i++;
 	}
 	free(dest);
 	free(dest1);
 	return (0);
 }
+
+/*
+int	main(void)
+{
+//	char c[256] = "42tokyo";
+
+	printf("%lu\n", strlcpy(NULL , "aiueo", 0)); // 5
+	printf("%lu\n", ft_strlcpy(NULL , "aiueo", 0)); // 5
+	printf("%lu\n", strlcpy(NULL , "aiueo", 2)); // segmentation fault
+	printf("%lu\n", ft_strlcpy(NULL , "aiueo", 2)); // segmentation fault
+	printf("%lu\n", strlcpy(c , NULL , 0)); // segmentation fault
+	printf("%lu\n", ft_strlcpy(c , NULL , 0)); // segmentation fault
+	printf("%lu\n", strlcpy(c , NULL , 2)); // segmentation fault
+	printf("%lu\n", ft_strlcpy(c , NULL , 2)); // segmentation fault
+	printf("%lu\n", strlcpy(NULL , NULL , 0)); // segmentation fault
+	printf("%lu\n", ft_strlcpy(NULL , NULL , 0)); // segmentation fault
+	printf("%lu\n", strlcpy(NULL , NULL , 2)); // segmentation fault
+	printf("%lu\n", ft_strlcpy(NULL , NULL , 2)); // segmentation fault
+
+return (0);
+}
+*/

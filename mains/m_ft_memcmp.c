@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:01:52 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/05 11:05:57 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/15 11:01:15 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 static void		ft_print_result(int n, int j)
 {
 //	printf("\nft:%i, original:%i\n", n, j);
-	if (n == j)
+	if (n > 0 && j > 0)
+		printf("o ");
+	else if ( n < 0 && j < 0)
+		printf("o ");
+	else if ( n == 0 && j == 0)
 		printf("o ");
 	else
 		printf("x ");

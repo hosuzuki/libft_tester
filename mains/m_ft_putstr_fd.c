@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:31:21 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/04 15:36:52 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/20 09:49:38 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int		main(void)
 {
 	ft_putstr_fd("1:o ", 1);
-//	printf("2: over INT_MAX\n");
+//	printf("2: ");
 //	char	*buf = malloc(2147483660);
 //	memset(buf, 'a', 2147483660);
 //	buf[2147483659] = 'b';
