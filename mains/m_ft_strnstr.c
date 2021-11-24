@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:08:05 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/18 22:25:47 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/20 11:58:03 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,20 @@
 #include <unistd.h>
 #include "libft.h"
 #include <stdio.h>
+/*
+int	main(void) 
+{
+	char *s1 = "AAAAAAAAAAAAA";
+	size_t max = strlen(s1);
+	char *i1 = strnstr(s1, s1, max);
+	char *i2 = ft_strnstr(s1, s1, max);
 
+	strnstr: |AAAAAAAAAAAAA|
+  ft_strnstr: |(null)|
+	return 0;
+}
+
+*/
 
 static void		check_strnstr(char *big, char *little, int len)
 {
@@ -28,15 +41,15 @@ static void		check_strnstr(char *big, char *little, int len)
 		printf("o ");
 	else
 		printf("x ");
-//	printf("\nft is: %s\nst is: %s\n", str, str1);
+	//	printf("\nft is: %s\nst is: %s\n", str, str1);
 }
 
 int	main(void)
 {
 	int i;
 	char s[] = "hello world! Hello World! 42! Forty two!";
-//	char s1[] = "hello world! Hello World! 42! Forty two!";
-	
+	//	char s1[] = "hello world! Hello World! 42! Forty two!";
+
 	i = 1;
 	while (i < 12)
 	{
@@ -68,6 +81,7 @@ int	main(void)
 	return (0);
 }
 
+
 /*
 //segmenatation fault case
 int	main(void)
@@ -92,10 +106,10 @@ return (0);
 */
 
 /*
-strnstr("aiueo", NULL, 5); // segmentation fault
-strnstr("aiueo", NULL, 0); // segmentation fault
-strnstr(NULL, NULL, 5); // segmentation fault
-strnstr(NULL, NULL, 0); // segmentation fault
-strnstr(NULL, "aiueo", 0); // (null)
-strnstr(NULL, "aiueo", 5); // segmentation fault
-*/
+	 strnstr("aiueo", NULL, 5); // segmentation fault
+	 strnstr("aiueo", NULL, 0); // segmentation fault
+	 strnstr(NULL, NULL, 5); // segmentation fault
+	 strnstr(NULL, NULL, 0); // segmentation fault
+	 strnstr(NULL, "aiueo", 0); // (null)
+	 strnstr(NULL, "aiueo", 5); // segmentation fault
+	 */

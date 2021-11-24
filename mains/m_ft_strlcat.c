@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:06:12 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/19 11:54:37 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/23 12:49:59 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,11 @@ int	main(void)
 			dest[14] = 'a';
 			dest1[14] = 'a';
 			check_strlcat(dest, dest1, "lorem ipsum dolor sit amet", 15, dest_len);
-		i++;
+/*			char s1[] = "apple\0\0appleapple";
+			char s2[] = "apple\0\0appleapple";
+			check_strlcat(s1, s2, "helloworld!", 10, dest_len);
+*/
+			i++;
 		}
 		else if (i == 5)
 		{
