@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:02:17 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/19 13:03:01 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/24 21:56:20 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include <string.h>
 #include "libft.h"
 #include <stdio.h>
-
-
 static void		check_memmove(void *dest, void *dest1, void *src, void *src1, int n)
 {
 	if (dest != ft_memmove(dest, src, n))

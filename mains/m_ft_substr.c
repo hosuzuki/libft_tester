@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:35:18 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/20 08:02:18 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/25 10:37:54 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include "libft.h"
 #include <stdio.h>
+#include <string.h>
 
 static void		check_substr(char *str, int start, size_t len, int i)
 {

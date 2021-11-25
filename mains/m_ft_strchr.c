@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:03:23 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/18 21:18:27 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/25 09:58:25 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(void)
 		printf("%d:", i);
 		if (i == 1)
 			check_strchr(str1, str2, 'b');
+//			check_strchr(str1, str2, -2);
 		else if (i == 2)
 			check_strchr(str1, str2, 's');
 		else if (i == 3)

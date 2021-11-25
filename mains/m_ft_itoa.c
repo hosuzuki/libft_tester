@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:19:22 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/03 13:00:05 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/25 10:37:18 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include "libft.h"
 #include <stdio.h>
+#include <string.h>
 
 static void judge(int	i)
 {

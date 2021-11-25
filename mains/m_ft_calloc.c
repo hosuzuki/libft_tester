@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 11:59:07 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/19 16:03:37 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/25 10:36:42 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "libft.h"
 #include <stdio.h>
 #include <errno.h>
-
+#include <string.h>
 /*
 int main(void)
 {

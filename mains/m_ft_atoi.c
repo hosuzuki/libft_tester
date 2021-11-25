@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 11:58:41 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/19 06:47:05 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/25 10:36:06 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,11 +145,12 @@ int	main(void)
 //		printf("ft :  %d\n", ft_atoi("9223372036854775807"));
 	judge(ft_atoi("9223372036854775807"), atoi("9223372036854775807"));
 	printf("21:");// over long max
-	//	printf("\nst :  %d\n",    atoi("9223372036854775808"));
-	//	printf("ft :  %d\n", ft_atoi("9223372036854775808"));
-	//printf("21.5:");// over long max
-	//	printf("\nst :  %d\n",    atoi("9223372036854775809"));
-	//	printf("ft :  %d\n", ft_atoi("9223372036854775809"));
+/*	printf("\nst :  %d\n",    atoi("9223372036854775808"));
+	printf("ft :  %d\n", ft_atoi("9223372036854775808"));
+	printf("21.5:");// over long max
+	printf("\nst :  %d\n",    atoi("9223372036854775809"));
+	printf("ft :  %d\n", ft_atoi("9223372036854775809"));
+*/
 	judge(ft_atoi("9223372036854775808"), atoi("9223372036854775808"));
 	printf("22:");
 	//printf("\nst :  %d\n",    atoi("-9223372036854775807"));
@@ -160,8 +161,8 @@ int	main(void)
 	//	printf("ft :  %d\n", ft_atoi("-9223372036854775808"));
 	judge(ft_atoi("-9223372036854775808"), atoi("-9223372036854775808"));
 	printf("24:"); //over long min
-	//	printf("\nst :  %d\n",    atoi("-9223372036854775809"));
-	//	printf("ft :  %d\n", ft_atoi("-9223372036854775809"));
+//		printf("\nst :  %d\n",    atoi("-9223372036854775809"));
+//		printf("ft :  %d\n", ft_atoi("-9223372036854775809"));
 	judge(ft_atoi("-9223372036854775809"), atoi("-9223372036854775809"));
 	printf("25:");
 //		printf("\nst :  %d\n",    atoi("-9223372036854775810"));

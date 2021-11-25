@@ -6,7 +6,7 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 15:16:30 by jtoty             #+#    #+#             */
-/*   Updated: 2021/10/31 06:25:05 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2021/11/25 10:38:07 by hokutosuz        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include "libft.h"
 #include <stdio.h>
+#include <string.h>
 
 static t_list	*check_lstnew(void *content)
 {
