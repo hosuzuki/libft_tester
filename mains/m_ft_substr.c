@@ -6,10 +6,11 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:35:18 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/25 10:37:54 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/10/24 16:45:42 by hos              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "libft.h"

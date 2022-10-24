@@ -6,13 +6,14 @@
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 11:59:07 by jtoty             #+#    #+#             */
-/*   Updated: 2021/11/25 10:36:42 by hokutosuz        ###   ########.fr       */
+/*   Updated: 2022/10/24 16:51:45 by hos              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 
 #include <stdlib.h>
+#include <stdint.h>
 #include <unistd.h>
 #include "libft.h"
 #include <stdio.h>
@@ -76,8 +77,8 @@ int	main(void)
 	printf("3:");
 	char *str2;
 	char *str3;
-	str2 = (char *)ft_calloc(SIZE_MAX, SIZE_MAX);
-	str3 = (char *)calloc(SIZE_MAX, SIZE_MAX);
+	str2 = (char *)ft_calloc(SIZE_MAX / 2, 1);
+	str3 = (char *)calloc(SIZE_MAX / 2, 1);
 	judge(str2, str3);
 	free(str);
 	free(str1);
